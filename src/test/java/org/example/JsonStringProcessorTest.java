@@ -45,22 +45,35 @@ class JsonStringProcessorTest {
     }
 
     @Test
-    void testReadStringFromFile_noFile_noException() {
+    void testReadStringFromFile_noFile_doesNotThrowException() {
 
         final String emptyArgument = "";
-        final String result = jsonStringProcessor.readStringFromFile(emptyArgument);
-
-        assertNull(result);
         assertDoesNotThrow(() -> jsonStringProcessor.readStringFromFile(emptyArgument));
 
     }
 
     @Test
-    void testReadStringFromFile_nullArgument_noException() {
+    void testReadStringFromFile_noFile() {
+
+        final String emptyArgument = "";
+        final String result = jsonStringProcessor.readStringFromFile(emptyArgument);
+
+        assertNull(result);
+
+    }
+
+    @Test
+    void testReadStringFromFile_nullArgument_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> jsonStringProcessor.readStringFromFile(null));
+
+    }
+
+    @Test
+    void testReadStringFromFile_nullArgument() {
 
         final String expected = jsonStringProcessor.readStringFromFile(null);
         assertNull(expected);
-        assertDoesNotThrow(() -> jsonStringProcessor.readStringFromFile(null));
 
     }
 }

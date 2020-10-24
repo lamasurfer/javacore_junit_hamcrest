@@ -36,26 +36,40 @@ class SimpleParserTest {
     }
 
     @Test
-    void testParseCSV_emptyArgument_noException() {
+    void testParseCSV_emptyArgument_doesNotThrowException() {
+
+        final String argument = "";
+
+        assertDoesNotThrow(() -> simpleParser.parseCSV(argument));
+
+    }
+
+    @Test
+    void testParseCSV_emptyArgument() {
 
         final String argument = "";
         final List<Employee> expectedList = new ArrayList<>();
         final List<Employee> resultList = simpleParser.parseCSV(argument);
 
         assertEquals(expectedList, resultList);
-        assertDoesNotThrow(() -> simpleParser.parseCSV(argument));
-
         assertThat(expectedList, is(resultList));
+
     }
 
     @Test
-    void testParseCSV_nullArgument_noException() {
+    void testParseCSV_nullArgument_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> simpleParser.parseCSV(null));
+
+    }
+
+    @Test
+    void testParseCSV_nullArgument() {
 
         final List<Employee> expectedList = new ArrayList<>();
         final List<Employee> resultList = simpleParser.parseCSV(null);
 
         assertEquals(expectedList, resultList);
-        assertDoesNotThrow(() -> simpleParser.parseCSV(null));
 
         assertThat(expectedList, is(resultList));
     }
@@ -78,27 +92,39 @@ class SimpleParserTest {
     }
 
     @Test
-    void testParseXML_emptyArgument_noException() {
+    void testParseXML_emptyArgument_doesNotThrowException() {
 
         final String argument = "";
 
+        assertDoesNotThrow(() -> simpleParser.parseXML(argument));
+    }
+
+    @Test
+    void testParseXML_emptyArgument() {
+
+        final String argument = "";
         final List<Employee> expectedList = new ArrayList<>();
         final List<Employee> resultList = simpleParser.parseXML(argument);
 
         assertEquals(expectedList, resultList);
-        assertDoesNotThrow(() -> simpleParser.parseXML(""));
 
         assertThat(expectedList, is(resultList));
     }
 
     @Test
-    void testParseXML_nullArgument_noException() {
+    void testParseXML_nullArgument_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> simpleParser.parseXML(null));
+
+    }
+
+    @Test
+    void testParseXML_nullArgument() {
 
         final List<Employee> expectedList = new ArrayList<>();
         final List<Employee> resultList = simpleParser.parseXML(null);
 
         assertEquals(expectedList, resultList);
-        assertDoesNotThrow(() -> simpleParser.parseXML(null));
 
         assertThat(expectedList, is(resultList));
     }

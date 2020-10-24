@@ -46,27 +46,43 @@ class JsonListProcessorTest {
     }
 
     @Test
-    void testListToJson_emptyList_noException() {
+    void testListToJson_emptyList_doesNotThrowException() {
+
+        final List<Employee> argumentList = new ArrayList<>();
+
+        assertDoesNotThrow(() -> jsonListProcessor.listToJson(argumentList));
+
+    }
+
+    @Test
+    void testListToJson_emptyList() {
 
         final List<Employee> argumentList = new ArrayList<>();
         final String expected = "[]";
         final String result = jsonListProcessor.listToJson(argumentList);
 
         assertEquals(expected, result);
-        assertDoesNotThrow(() -> jsonListProcessor.listToJson(argumentList));
 
         assertThat(expected, is(result));
 
     }
 
     @Test
-    void testListToJson_nullArgument_noException() {
+    void testListToJson_nullArgument_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> jsonListProcessor.listToJson(null));
+
+
+    }
+
+    @Test
+    void testListToJson_nullArgument() {
 
         final String expected = "null";
         final String result = jsonListProcessor.listToJson(null);
 
         assertEquals(expected, result);
-        assertDoesNotThrow(() -> jsonListProcessor.listToJson(null));
+
 
         assertThat(expected, is(result));
     }
@@ -103,26 +119,39 @@ class JsonListProcessorTest {
     }
 
     @Test
-    void testJsonToList_emptyArgument_noException() {
+    void testJsonToList_emptyArgument_doesNotThrowException() {
+
+        final String argument = "";
+        assertDoesNotThrow(() -> jsonListProcessor.jsonToList(argument));
+
+    }
+
+    @Test
+    void testJsonToList_emptyArgument() {
 
         final String argument = "";
         final List<Employee> expectedList = new ArrayList<>();
         final List<Employee> resultList = jsonListProcessor.jsonToList(argument);
 
         assertEquals(expectedList, resultList);
-        assertDoesNotThrow(() -> jsonListProcessor.jsonToList(argument));
 
         assertThat(expectedList, is(resultList));
     }
 
     @Test
-    void testJsonToList_nullArgument_noException() {
+    void testJsonToList_nullArgument_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> jsonListProcessor.jsonToList(null));
+
+    }
+
+    @Test
+    void testJsonToList_nullArgument() {
 
         final List<Employee> expectedList = new ArrayList<>();
         final List<Employee> resultList = jsonListProcessor.jsonToList(null);
 
         assertEquals(expectedList, resultList);
-        assertDoesNotThrow(() -> jsonListProcessor.jsonToList(null));
 
         assertThat(expectedList, is(resultList));
     }
