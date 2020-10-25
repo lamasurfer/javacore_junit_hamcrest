@@ -14,6 +14,19 @@ class JsonStringProcessorTest {
     final JsonStringProcessor jsonStringProcessor = new JsonStringProcessor();
 
     @Test
+    void testWriteStringToFile_nullArguments_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> jsonStringProcessor.writeStringToFile(null, null));
+    }
+
+    @Test
+    void testWriteStringToFile_emptyArguments_doesNotThrowException() {
+
+        assertDoesNotThrow(() -> jsonStringProcessor.writeStringToFile("", ""));
+    }
+
+
+    @Test
     void testReadStringFromFile_validArgument() {
 
         final URL resourceFileURL = this.getClass().getResource("/test_data.json");

@@ -8,11 +8,11 @@ import java.io.*;
 
 public class JsonStringProcessor {
 
-    public void writeString(String jsonString, String outputFile) {
+    public void writeStringToFile(String jsonString, String outputFile) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFile))) {
             bufferedWriter.write(jsonString);
             bufferedWriter.flush();
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             System.out.println("Exception at writeString(...)!");
         }
     }
